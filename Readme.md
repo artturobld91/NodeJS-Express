@@ -43,3 +43,13 @@ app.listen(port, () => {
 Execute the server file using Node.js from the terminal:
 
 `node app.js`# NodeJS-Express
+
+7. Install nodemon (For live updates with the server when dev)
+
+`npm install -g nodemon`
+
+Add scripts to package.json 
+`"start:dev": "nodemon index.js"`
+`"start": "node index.js"`
+Then execute the scripts on the terminal
+`npm run start:dev`
