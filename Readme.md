@@ -53,3 +53,11 @@ Add scripts to package.json
 `"start": "node index.js"`
 Then execute the scripts on the terminal
 `npm run start:dev`
+
+### To verify requests origination
+1. Install cors
+`npm install cors`
+
+### To do validations on the requests
+1. Install express-validator
+`npm install express-validator`
