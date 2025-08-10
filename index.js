@@ -1,9 +1,13 @@
 const express = require('express');
 const cors = require('cors'); //To enable CORS
+const dotenv = require('dotenv'); //To load environment variables
+const dbConnection = require('./database/dbconfig'); // Import the database connection function
+
+//Load environment variables from .env file
+dotenv.config();
 
 // Create an Express application
 const app = express();
-const port = 3000;
 
 //Enabling CORS
 app.use(cors());
@@ -11,6 +15,9 @@ app.use(cors());
 // Middleware to parse JSON bodies
 // Body Read and Parse - Note: This line should be placed before Routes
 app.use(express.json());
+
+// Connect to the database
+dbConnection(); 
 
 // Sample route
 app.get('/', (req, res) => {
@@ -21,8 +28,8 @@ app.get('/', (req, res) => {
 app.use('/api/items', require('./routes/standardcrudroutes'));
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running at http://localhost:${process.env.PORT || 3000}`);
 });
 
 // Export the app for testing purposes

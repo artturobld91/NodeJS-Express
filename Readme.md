@@ -54,10 +54,14 @@ Add scripts to package.json
 Then execute the scripts on the terminal
 `npm run start:dev`
 
-### To verify requests origination
-1. Install cors
+### To verify requests origination (CORS)
 `npm install cors`
 
 ### To do validations on the requests
-1. Install express-validator
 `npm install express-validator`
+
+### To create connections with MongoDb
+`npm install mongoose`
+
+### Te read .env files
+`npm install dotenv`

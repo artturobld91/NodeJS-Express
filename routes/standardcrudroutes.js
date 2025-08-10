@@ -16,14 +16,6 @@ router.put('/',
     [itemValidator],
     updateItem);
 
-// router.get('/items/:id', (req, res) => {
-//   res.send(`Get item with ID: ${req.params.id}`);
-// });
-
-// router.put('/items/:id', (req, res) => {
-//   res.send(`Update item with ID: ${req.params.id}`);
-// });
-
 router.delete('/:id', deleteItem);
 
 // Export the router to be used in the main app
