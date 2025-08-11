@@ -1,12 +1,18 @@
 const { Router } = require('express');
+const cors = require('cors');
 const { getItems, createItem, updateItem, deleteItem } = require('../controllers/standardcrudcontroller');
 const itemValidator = require('../middlewares/itemvalidator'); // Import the item validator middleware
+
+var corsOptions = {
+  origin: 'http://localhost:3000', // Adjust this to your frontend URL
+  methods: ['POST'],
+}
 
 // Create a new router instance
 const router = Router();
 
 // Sample CRUD routes
-router.get('/', getItems);
+router.get('/', [cors(corsOptions)], getItems);
 
 router.post('/', 
     [itemValidator], 

@@ -17,6 +17,34 @@ const getUsers = (req, res = response) => {
     });
 }
 
+const getUsersPagination = async(req, res = response) => {
+    const { page = 1, limit = 10 } = req.query;
+    const skip = (page - 1) * limit;
+
+    const totalUsers = await UserT.countDocuments({});
+    const totalPages = Math.ceil(totalUsers / limit);
+
+    UserT.find({})
+        .skip(skip)
+        .limit(Number(limit))
+        .then(users => {
+            res.status(200).json({
+                success: true,
+                count: users.length,
+                totalpages: totalPages,
+                currentpage: Number(page),
+                nextpage: page < totalPages ? Number(page) + 1 : null,
+                data: users || []
+            });
+        }).catch(err => {
+            res.status(500).json({
+                success: false,
+                message: 'Error retrieving users',
+                error: err.message
+            });
+        });
+}   
+
 const createUser = async(req, res = response) => {
     const { name, email, password, role } = req.body;
 
@@ -94,6 +122,7 @@ const deleteUser = (req, res = response) => {
 
 module.exports = {
     getUsers,
+    getUsersPagination,
     createUser,
     updateUser,
     deleteUser
