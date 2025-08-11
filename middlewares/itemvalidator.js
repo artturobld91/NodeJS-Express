@@ -1,5 +1,5 @@
 const { response } = require('express');
-const {validationResult, check} = require('express-validator');
+const { validationResult, check } = require('express-validator');
 
 // Middleware to validate item data
 const itemValidator = [

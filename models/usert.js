@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const UserSchema = Schema({
+const UserTSchema = Schema({
     name: {
         type: String,
         required: true
@@ -25,13 +25,13 @@ const UserSchema = Schema({
     }
 });
 
-UserSchema.method('toJSON', function(){
+UserTSchema.method('toJSON', function(){
     const { __v, _id, password, ...object } = this.toObject();
     object.uid = _id;
     return object;
 })
 
-module.exports = model('User', UserSchema); // This code defines a Mongoose schema and model for a User entity.
+module.exports = model('UserT', UserTSchema);// This code defines a Mongoose schema and model for a User entity.
 // The User model includes fields for name, email, password, role, and status.
 // The email field is unique, and the role field has predefined values.
 // The model is exported for use in other parts of the application.

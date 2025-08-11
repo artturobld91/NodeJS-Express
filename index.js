@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 
 // Routes
 app.use('/api/items', require('./routes/standardcrudroutes'));
+app.use('/api/users', require('./routes/usersroutes'));
 
 // Start the server
 app.listen(process.env.PORT, () => {
